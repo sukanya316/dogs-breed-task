@@ -8,7 +8,8 @@ const DogsBreed=()=>{
     const [dogs,setDogs]=useState([])
     const [favourites,setFavourites]=useState([])
     const [val,setVal]=useState('')
-   
+
+    //Getting the dogs list by breed
     const getDogsList=async()=>{
         const response=await fetch('https://dog.ceo/api/breed/hound/images',{method:'GET'})
         const data=await response.json()
@@ -19,6 +20,8 @@ const DogsBreed=()=>{
         setDogs(arr)
         
     }
+
+    //Getting list based on searched breed 
     const getSearchedItems=async()=>{
         const response=await fetch(`https://dog.ceo/api/breed/${val}/images/random/10`)
         const data=await response.json()
@@ -34,6 +37,7 @@ const DogsBreed=()=>{
        
     }
 
+    // Favorite and Unfavorite the item
     const addToFavourites=(dogObj)=>{
         const {id}=dogObj
         const isItemFound=favourites.find(favItem=>favItem.id===id)
